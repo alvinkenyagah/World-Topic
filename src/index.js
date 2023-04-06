@@ -25,13 +25,13 @@ window.addEventListener("DOMContentLoaded", () => {
         if (author === null) {
           author = "unknown";
         }
-  
+        let fallbackImage = "./src/error.gif"
         newsHTML += `
-          <div class="news-item" data-aos="fade-up-right">
+          <div class="news-item" data-aos="zoom-in">
             <h3><a href="${link}" style="color: inherit;">${title}</a></h3>
             <h2>Author: ${author}</h2>
             <p>${description}</p><br>
-            <img src="${image}" alt="${title}">
+            <img src="${image}" alt="${title}" onerror="this.onerror=null;this.src='${fallbackImage}';">
           </div>
         `;
       });
