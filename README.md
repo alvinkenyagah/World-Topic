@@ -3,6 +3,9 @@
 
 <img src="./src/cover.png" alt="cover">
 
+####  web  , Thursday, April 06  2023
+#### By **Alvin Kenyagah**
+
 ## Description
 World-Topic is a platform that allows users to search for topics they are interested in and the application fetches links to articles related to the search query.
 ## Setup/Installation Requirements
