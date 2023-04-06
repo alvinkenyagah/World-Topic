@@ -20,13 +20,17 @@ form.addEventListener('submit', (e)=>{
         let title = article.title;
         let author = article.author;
         let description = article.description;
+        let link = article.url;
         let image = article.urlToImage;
-
+        if(author===null){
+          return author = "unknown"
+        }
+        console.log(author)
         newsHTML += `
             <div class="news-item">
-              <h2>${title}</h2>
-              <p>Author: ${author}</p>
-              <p>${description}</p>
+              <h3>${title}</h3>
+              <h2>By: <a href= ${link}>${author}</a></h2>
+              <p>${description}</p><br>
               <img src="${image}" alt="${title}">
             </div>
           `;
