@@ -1,4 +1,4 @@
-
+window.addEventListener('DOMContentLoaded', ()=>{
 let form= document.querySelector('#search')
 
 form.addEventListener('submit', (e)=>{
@@ -40,4 +40,6 @@ form.addEventListener('submit', (e)=>{
       technology.innerHTML = newsHTML;
     });
     form.reset()
+})
+
 })
