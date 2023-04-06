@@ -29,8 +29,8 @@ window.addEventListener("DOMContentLoaded", () => {
           console.log(author);
           newsHTML += `
             <div class="news-item">
-              <h3 >${title}</h3>
-              <h2>Author: <a href= ${link} style="color: inherit; text-decoration: none; ">${author}</a></h2>
+              <h3 > <a href= ${link} style="color: inherit;  ">${title}</a></h3>
+              <h2>Author:${author}</h2>
               <p>${description}</p><br>
               <img src="${image}" alt="${title}">
             </div>
