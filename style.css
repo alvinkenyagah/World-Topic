@@ -1,7 +1,9 @@
 .news-item {
     border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 1%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 0.85%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto auto auto;
@@ -9,6 +11,7 @@
   }
 
   .news-item img {
+    border: 0.01px solid;
     max-width: 100%;
     height: auto;
     grid-column: 1 / 2;
@@ -26,3 +29,5 @@
     grid-column: 2 / 4;
     grid-row: 2 / 3;
   }
+
+  
