@@ -1,4 +1,4 @@
-let form= document.querySelector('form')
+let form= document.querySelector('#search')
 
 form.addEventListener('submit', (e)=>{
 
@@ -25,11 +25,12 @@ form.addEventListener('submit', (e)=>{
         if(author===null){
           return author = "unknown"
         }
+       
         console.log(author)
         newsHTML += `
             <div class="news-item">
-              <h3>${title}</h3>
-              <h2>By: <a href= ${link}>${author}</a></h2>
+              <h3 >${title}</h3>
+              <h2>Author: <a href= ${link}>${author}</a></h2>
               <p>${description}</p><br>
               <img src="${image}" alt="${title}">
             </div>
