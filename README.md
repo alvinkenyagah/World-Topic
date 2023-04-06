@@ -3,7 +3,7 @@
 
 <img src="./src/cover.png" alt="cover">
 
-####  web  , Thursday, April 06  2023
+#### Thursday, April 06  2023
 #### By **Alvin Kenyagah**
 
 ## Description
