@@ -11,33 +11,34 @@ window.addEventListener("DOMContentLoaded", () => {
     let url = `https://newsapi.org/v2/everything?q=${topic}&apiKey=${api}`;
 
     fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        let articles = data.articles;
-        let newsHTML = "";
-        articles.forEach(function (article) {
-          let title = article.title;
-          let author = article.author;
-          let description = article.description;
-          let link = article.url;
-          let image = article.urlToImage;
-          if (author === null) {
-            return (author = "unknown");
-          }
-
-          console.log(author);
-          newsHTML += `
-            <div class="news-item">
-              <h3 > <a href= ${link} style="color: inherit;  ">${title}</a></h3>
-              <h2>Author:${author}</h2>
-              <p>${description}</p><br>
-              <img src="${image}" alt="${title}">
-            </div>
-          `;
-        });
-        technology.innerHTML = newsHTML;
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      let articles = data.articles;
+      let newsHTML = "";
+      articles.forEach(function (article) {
+        let title = article.title;
+        let author = article.author;
+        let description = article.description;
+        let link = article.url;
+        let image = article.urlToImage;
+        if (author === null) {
+          author = "unknown";
+        }
+  
+        newsHTML += `
+          <div class="news-item" data-aos="fade-up-right">
+            <h3><a href="${link}" style="color: inherit;">${title}</a></h3>
+            <h2>Author: ${author}</h2>
+            <p>${description}</p><br>
+            <img src="${image}" alt="${title}">
+          </div>
+        `;
       });
+      technology.innerHTML = newsHTML;
+      AOS.init(); // initialize AOS after the news items have been added to the DOM
+    });
+  
     form.reset();
   });
 });
