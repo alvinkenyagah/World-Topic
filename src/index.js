@@ -80,7 +80,15 @@ window.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => {
         console.error(error);
-        technology.innerHTML = "An error occurred while fetching news.";
+        let errorImg = document.createElement('img')
+
+       errorImg.src= './src/error.gif'
+
+       errorImg.style.textAlign= "cente"
+
+        technology.appendChild(errorImg);
+
+        // technology.innerHTML = "An error occurred while fetching news.";
       });
    form.reset()
   });
