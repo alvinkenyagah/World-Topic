@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
     fetch(url2, {
       method: "GET",
       headers: {
-        "x-api-key": "7SscEwHNf9eLjqEmneIY_KDQbZYwYFyqxEN_f1yo3vA",
+        "x-api-key": "7SscEwHNf9eLjqEmneIY_KDQbZYwYFyqxEN_f1yo3v",
         "x-rapidapi-host": "newscatcher.p.rapidapi.com",
       },
     })
@@ -82,9 +82,9 @@ window.addEventListener("DOMContentLoaded", () => {
         console.error(error);
         technology.innerHTML = "An error occurred while fetching news.";
       });
-   
+   form.reset()
   });
-form.reset()
+
 });
 
 
