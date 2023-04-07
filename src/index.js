@@ -1,44 +1,90 @@
-window.addEventListener("DOMContentLoaded", () => {
-  let form = document.querySelector("#search");
 
+window.addEventListener("DOMContentLoaded", () => {
+  let form = document.querySelector('form');
+  let technology = document.getElementById("technology");
+  form.reset()
+  
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    let technology = document.getElementById("technology");
-    let api = "cbe5e4be705e46479aad0781844cafff";
     let topic = document.getElementById("topic").value;
+    console.log(topic)
+    let url2 = `https://api.newscatcherapi.com/v2/search?q=${topic}&lang=en`;
 
-    let url = `https://newsapi.org/v2/everything?q=${topic}&apiKey=${api}`;
+    fetch(url2, {
+      method: "GET",
+      headers: {
+        "x-api-key": "7SscEwHNf9eLjqEmneIY_KDQbZYwYFyqxEN_f1yo3vA",
+        "x-rapidapi-host": "newscatcher.p.rapidapi.com",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // create a div to hold the data
+        let dataDiv = document.createElement("div");
+        dataDiv.classList.add("news-container");
 
-    fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      let articles = data.articles;
-      let newsHTML = "";
-      articles.forEach(function (article) {
-        let title = article.title;
-        let author = article.author;
-        let description = article.description;
-        let link = article.url;
-        let image = article.urlToImage;
-        if (author === null) {
-          author = "unknown";
+        // loop through the articles and create an HTML element for each one
+        for (let i = 0; i < data.articles.length; i++) {
+          let articleDiv = document.createElement("div");
+          articleDiv.classList.add("news-item");
+
+          let articleTitle = document.createElement("h2");
+          articleTitle.classList.add("news-title");
+
+          let articleDescription = document.createElement("p");
+          articleDescription.classList.add("news-description");
+
+          let publish = document.createElement('h4');
+          publish.classList.add("news-published");
+
+          let articleURL = document.createElement('a');
+          articleURL.classList.add("news-url");
+
+          let articleImage = document.createElement("img");
+          articleImage.classList.add("news-image");
+
+          publish.textContent = new Date(data.articles[i].published_date).toDateString();
+          articleTitle.textContent = data.articles[i].title;
+          articleDescription.textContent = data.articles[i].summary;
+          articleImage.src = data.articles[i].media;
+          articleURL.textContent = "Read more";
+          articleURL.href = data.articles[i].link;
+
+          articleDiv.appendChild(articleTitle);
+
+          articleImage.onerror = function() {
+            let fallbackImage = './src/error.gif';
+            this.onerror = null;
+            this.src = fallbackImage;
+          };
+          articleImage.style.width="240px"
+          articleDiv.appendChild(articleImage);
+
+          articleDiv.appendChild(articleDescription);
+
+         
+
+          articleURL.style.textDecoration="none";
+          articleDiv.appendChild(articleURL);
+
+         
+          articleDiv.appendChild(publish);
+
+          dataDiv.appendChild(articleDiv);
         }
-        let fallbackImage = "./src/error.gif"
-        newsHTML += `
-          <div class="news-item" data-aos="zoom-in">
-            <h3><a href="${link}" style="color: inherit;">${title}</a></h3>
-            <h2>Author: ${author}</h2>
-            <p>${description}</p><br>
-            <img src="${image}" alt="${title}" onerror="this.onerror=null;this.src='${fallbackImage}';">
-          </div>
-        `;
+
+        // append the data div to the technology div
+        technology.appendChild(dataDiv);
+
+      })
+      .catch((error) => {
+        console.error(error);
+        technology.innerHTML = "An error occurred while fetching news.";
       });
-      technology.innerHTML = newsHTML;
-      AOS.init(); // initialize AOS after the news items have been added to the DOM
-    });
-  
-    form.reset();
+   
   });
+form.reset()
 });
+
+
