@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
     fetch(url2, {
       method: "GET",
       headers: {
-        "x-api-key": "7SscEwHNf9eLjqEmneIY_KDQbZYwYFyqxEN_f1yo3v",
+        "x-api-key": "7SscEwHNf9eLjqEmneIY_KDQbZYwYFyqxEN_f1yo3vA",
         "x-rapidapi-host": "newscatcher.p.rapidapi.com",
       },
     })

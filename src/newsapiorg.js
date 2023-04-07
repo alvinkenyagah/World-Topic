@@ -37,7 +37,19 @@
 //       });
 //       technology.innerHTML = newsHTML;
 //       AOS.init(); // initialize AOS after the news items have been added to the DOM
-//     });
+//     }).catch((error) => {
+//         console.error(error);
+//         let errorImg = document.createElement('img')
 
-//     form.reset();
+//        errorImg.src= './src/error.gif'
+
+//        errorImg.style.textAlign= "cente"
+
+//         technology.appendChild(errorImg);
+
+//         // technology.innerHTML = "An error occurred while fetching news.";
+//       });
+//    form.reset()
 //   });
+
+// });
