@@ -1,14 +1,13 @@
-
 window.addEventListener("DOMContentLoaded", () => {
-  let form = document.querySelector('form');
+  let form = document.querySelector("form");
   let technology = document.getElementById("technology");
-  form.reset()
-  
+  form.reset();
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     let topic = document.getElementById("topic").value;
-    console.log(topic)
+    console.log(topic);
     let url2 = `https://api.newscatcherapi.com/v2/search?q=${topic}&lang=en`;
 
     fetch(url2, {
@@ -35,16 +34,18 @@ window.addEventListener("DOMContentLoaded", () => {
           let articleDescription = document.createElement("p");
           articleDescription.classList.add("news-description");
 
-          let publish = document.createElement('h4');
+          let publish = document.createElement("h4");
           publish.classList.add("news-published");
 
-          let articleURL = document.createElement('a');
+          let articleURL = document.createElement("a");
           articleURL.classList.add("news-url");
 
           let articleImage = document.createElement("img");
           articleImage.classList.add("news-image");
 
-          publish.textContent = new Date(data.articles[i].published_date).toDateString();
+          publish.textContent = new Date(
+            data.articles[i].published_date
+          ).toDateString();
           articleTitle.textContent = data.articles[i].title;
           articleDescription.textContent = data.articles[i].summary;
           articleImage.src = data.articles[i].media;
@@ -53,22 +54,19 @@ window.addEventListener("DOMContentLoaded", () => {
 
           articleDiv.appendChild(articleTitle);
 
-          articleImage.onerror = function() {
-            let fallbackImage = './src/error.gif';
+          articleImage.onerror = function () {
+            let fallbackImage = "./src/error.gif";
             this.onerror = null;
             this.src = fallbackImage;
           };
-          articleImage.style.width="240px"
+          articleImage.style.width = "240px";
           articleDiv.appendChild(articleImage);
 
           articleDiv.appendChild(articleDescription);
 
-         
-
-          articleURL.style.textDecoration="none";
+          articleURL.style.textDecoration = "none";
           articleDiv.appendChild(articleURL);
 
-         
           articleDiv.appendChild(publish);
 
           dataDiv.appendChild(articleDiv);
@@ -76,23 +74,19 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // append the data div to the technology div
         technology.appendChild(dataDiv);
-
       })
       .catch((error) => {
         console.error(error);
-        let errorImg = document.createElement('img')
+        let errorImg = document.createElement("img");
 
-       errorImg.src= './src/error.gif'
+        errorImg.src = "./src/error.gif";
 
-       errorImg.style.textAlign= "cente"
+        errorImg.style.textAlign = "center";
 
         technology.appendChild(errorImg);
 
         // technology.innerHTML = "An error occurred while fetching news.";
       });
-   form.reset()
+    form.reset();
   });
-
 });
-
-
