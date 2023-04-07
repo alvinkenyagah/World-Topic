@@ -7,7 +7,7 @@
 #### By **Alvin Kenyagah**
 
 ## Description
-World-Topic is a platform that allows users to search for topics they are interested in and the application fetches links to articles related to the search query.
+World-Topic is a platform that allows users to search for topics they are interested in and the application fetches links to articles related to the search query using data fetched from NewsCatcher API.
 ## Setup/Installation Requirements
 * An internet connection.
 * Browser.
