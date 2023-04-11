@@ -50,7 +50,9 @@ window.addEventListener("DOMContentLoaded", () => {
           articleDescription.textContent = data.articles[i].summary;
           articleImage.src = data.articles[i].media;
           articleURL.textContent = "Read more";
+
           articleURL.href = data.articles[i].link;
+          articleURL.setAttribute("target", "_blank");
 
           articleDiv.appendChild(articleTitle);
 
