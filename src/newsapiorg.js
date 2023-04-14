@@ -43,7 +43,7 @@
 
 //        errorImg.src= './src/error.gif'
 
-//        errorImg.style.textAlign= "cente"
+//        errorImg.style.textAlign= "center"
 
 //         technology.appendChild(errorImg);
 
